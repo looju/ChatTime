@@ -3,37 +3,31 @@ import {
   View,
   StyleSheet,
   Text,
-  Image,
-  ActivityIndicator,
-  ImageBackground,
 } from "react-native";
 import { useFonts, Arizonia_400Regular } from "@expo-google-fonts/dev";
+import Lottie from "lottie-react-native";
 
 export const Splash = ({ navigation }) => {
-
   useEffect(()=>{
     setTimeout(()=>{
     navigation.replace("Login")
     },6000)
   },[])
- 
+
   let [fontsLoaded] = useFonts({
     Arizonia_400Regular,
   });
 
-  if(fontsLoaded){
+  if (fontsLoaded) {
     return (
-      <ImageBackground
-        style={{ flex: 1 }}
-        source={require("../assets/splashscreen.jpg")}
-      >
+      <View style={styles.container}>
+        <Lottie autoPlay loop source={require("../assets/Chat.json")} style={{marginBottom:30}}/>
         <View style={styles.view}>
           <Text style={styles.text}>ChatTime</Text>
         </View>
-      </ImageBackground>
+      </View>
     );
   }
- 
 };
 
 const styles = StyleSheet.create({
@@ -42,9 +36,12 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontFamily: "Arizonia_400Regular",
   },
-  view:{
+  view: {
     alignItems: "center",
-    marginTop:500
-    
+    marginTop: 500,
+  },
+  container:{
+    flex:1,
+    backgroundColor: "#000",
   }
 });

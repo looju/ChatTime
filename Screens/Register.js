@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Alert, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -11,7 +11,7 @@ export const Register = ({ navigation }) => {
   const [avatar, setAvatar] = useState("");
   const [done, setDone] = useState(false);
 
-  const register = ({ navigation }) => {
+  const register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const User = userCredential.user;
@@ -32,11 +32,18 @@ export const Register = ({ navigation }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert("An unexpexted error occured");
-        console.log("this is the error message: " + errorMessage + " this is the error code: " + errorCode)
+        console.log(
+          "this is the error message: " +
+            errorMessage +
+            " this is the error code: " +
+            errorCode
+        );
       });
   };
 
-
+  const login = () => {
+    navigation.navigate("Login");
+  };
 
   return (
     <ImageBackground
@@ -94,6 +101,16 @@ export const Register = ({ navigation }) => {
           onPress={register}
         >
           Create Account
+        </Button>
+        <Button
+          icon="account-arrow-left"
+          mode="contained"
+          buttonColor="#000"
+          textColor="#fff"
+          style={{ marginVertical: 10 }}
+          onPress={login}
+        >
+          Already registered? Sign in
         </Button>
       </View>
     </ImageBackground>

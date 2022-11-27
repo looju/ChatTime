@@ -6,7 +6,8 @@ import { Login } from "./Screens/Login";
 import { Register } from "./Screens/Register";
 import { Chat } from "./Screens/Chat";
 import { Splash } from "./Screens/Splash";
-import { Login as LoginProvider } from "./Screens/Login";
+import { SlackContextProvider } from "./Context/SlackContext";
+import { GoogleContextProvider } from "./Context/GoogleContext";
 
 // const firebaseConfig = {
 //   apiKey:"AIzaSyD45sP8-YDr5DpO1OfXHzOBIjkt8-PkV_I",
@@ -24,27 +25,29 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-   
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Splash"
-            component={Splash}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="Chat" component={Chat} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    
+    <GoogleContextProvider>
+    <SlackContextProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Chat" component={Chat} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    </SlackContextProvider>
+    </GoogleContextProvider>
   );
 }

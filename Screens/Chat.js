@@ -19,13 +19,12 @@ import {
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-import { userContext } from "./Login";
-
+import { GoogleContext } from "../Context/GoogleContext";
 
 
 export const Chat = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
-  const {userInfo}=useContext(userContext)
+  const {userInfo}=useContext(GoogleContext)
 
   const signOutNow = () => {
     signOut(auth)
