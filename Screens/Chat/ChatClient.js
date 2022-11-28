@@ -26,12 +26,14 @@ export const useChatClient = () => {
         console.log("Error setting up user at ChatClient.js " + error);
       }
     };
+
+    if(!chatClient.userID){
+      setUpClient() //if no userID found
+    }
+  
   }, []);
 
-  if(!chatClient.userID){
-    setUpClient() //if no userID found
-  }
-
+ 
   return {
     clientIsReady,
   };
