@@ -36,6 +36,7 @@ export const SlackAuth = () => {
   React.useEffect(() => {
     if (response?.type === "success") {
       setAccessToken(response.authentication.accessToken);
+      const {data}=response.params
     }
   }, [response]);
 

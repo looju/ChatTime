@@ -32,11 +32,18 @@
     },
     "plugins": [
       [
-        "react-native-auth0",
+        "expo-document-picker",
         {
-          "domain": "YOUR_DOMAIN"
+          "iCloudContainerEnvironment": "Production"
+        },
+        "expo-image-picker",
+        {
+          "photosPermission": "Thia app accesses your photos to let you share them with your friends."
         }
       ]
+    ],
+    "permissions":[
+     "CAMERA","ACCESS_BACKGROUND_LOCATION","RECORD_AUDIO","READ_EXTERNAL_STORAGE","VIBRATE","WRITE_EXTERNAL_STORAGE"
     ]
   }
 }
