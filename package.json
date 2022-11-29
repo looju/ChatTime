@@ -20,7 +20,7 @@
     "@sendbird/chat": "^4.1.5",
     "@sendbird/uikit-react-native": "^2.0.1",
     "date-fns": "^2.29.3",
-    "expo": "~47.0.6",
+    "expo": "~47.0.8",
     "expo-auth-session": "~3.7.2",
     "expo-av": "~13.0.1",
     "expo-camera": "~13.1.0",

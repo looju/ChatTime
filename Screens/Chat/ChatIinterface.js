@@ -10,6 +10,7 @@ import { Chat, OverlayProvider } from "stream-chat-react-native";
 import { chatApiKey } from "./ChatConfig";
 import { StreamChat } from "stream-chat";
 import {ChannelListScreen} from './ChannelListScreen'
+import { ChannelScreen } from "./ChannelScreen";
 
 const chatClient = StreamChat.getInstance(chatApiKey); //fetches the client object
 
@@ -28,6 +29,7 @@ const NavigationStack = () => {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="ChannelListScreen" component={ChannelListScreen} />
+          <Stack.Screen name="ChannelScreen" component={ChannelScreen} />
         </Stack.Navigator>
       </Chat>
     </OverlayProvider>

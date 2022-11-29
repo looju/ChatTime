@@ -1,4 +1,4 @@
-import React,{useState,createContext} from 'react';
+import React,{useState,createContext,useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 export const ChatContext=createContext({
@@ -27,6 +27,6 @@ export const ChatContextProvider = ({children}) => {
     );
 }
 
-const styles = StyleSheet.create({})
+export const useChatContext = () => useContext(ChatContext);
 
 
