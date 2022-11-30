@@ -5,7 +5,7 @@ import {
   chatUserId,
   chatUserToken,
   chatUserName,
-} from "./chatConfig";
+} from "./ChatConfig";
 
 const chatClient = StreamChat.getInstance(chatApiKey);
 

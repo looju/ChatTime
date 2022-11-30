@@ -49,7 +49,7 @@ export const Register = ({ navigation }) => {
     <ImageBackground
       style={styles.backgroundImage}
       resizeMode="cover"
-      source={require("../assets/thebackground.jpg")}
+      source={require("../assets/newregister.jpg")}
     >
       <View style={styles.container}>
         <View style={styles.inputView}>

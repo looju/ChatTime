@@ -41,6 +41,10 @@ export const Login = ({ navigation }) => {
     Lusitana_400Regular,
   });
 
+  const justGo=()=>{
+    navigation.replace("Chat")
+  }
+
   if (fontsLoaded) {
     return (
       <ScrollView>
@@ -76,7 +80,7 @@ export const Login = ({ navigation }) => {
                 buttonColor="#000"
                 textColor="#fff"
                 style={{ marginVertical: 10 }}
-                onPress={signIn}
+                onPress={justGo}
               >
                 Login
               </Button>

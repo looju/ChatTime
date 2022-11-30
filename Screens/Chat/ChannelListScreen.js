@@ -1,9 +1,20 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import { ChannelList } from "stream-chat-react-native";
+import { View, StyleSheet, Text, FlatList } from "react-native";
+import {
+  ChannelList,
+  ChannelListLoadingIndicator,
+  ChannelListMessenger,
+  OverlayProvider,
+  Chat
+} from "stream-chat-expo";
 import { chatUserId } from "./ChatConfig";
 import { useChatContext } from "./ChatContext";
+import { StreamChat } from "stream-chat";
+import { chatApiKey } from "./ChatConfig";
 
+
+
+const chatClient = StreamChat.getInstance(chatApiKey); //fetches the client object
 const filters = {
   members: {
     $in: [chatUserId],
@@ -18,15 +29,20 @@ export const ChannelListScreen = (props) => {
   const { setChannel } = useChatContext();
 
   return (
-    <ChannelList
-      filters={filters}
-      sort={sort}
-      onSelect={(channel) => {
-        const { navigation } = props;
-        setChannel(channel);
-        navigation.navigate("ChannelScreen");
-      }}
-    />
+    <OverlayProvider>
+      <Chat client={chatClient}>
+        <ChannelList
+        filters={filters}
+        sort={sort}
+          onPress={(channel) => {
+            const { navigation } = props;
+            setChannel(channel);
+            navigation.navigate("ChannelScreen");
+          }}
+          
+        />
+      </Chat>
+    </OverlayProvider>
   );
 };
 

@@ -6,17 +6,15 @@ import { Text } from "react-native";
 import { useChatClient } from "./ChatClient";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ChatContextProvider } from "./ChatContext";
-import { Chat, OverlayProvider } from "stream-chat-react-native";
+import { Chat, OverlayProvider } from "stream-chat-expo";
 import { chatApiKey } from "./ChatConfig";
 import { StreamChat } from "stream-chat";
-import {ChannelListScreen} from './ChannelListScreen'
+import { ChannelListScreen } from "./ChannelListScreen";
 import { ChannelScreen } from "./ChannelScreen";
 
 const chatClient = StreamChat.getInstance(chatApiKey); //fetches the client object
 
 const Stack = createStackNavigator();
-
-const HomeScreen = () => <Text>Home Screen</Text>;
 
 const NavigationStack = () => {
   const { clientIsReady } = useChatClient(); //checks user connect status
@@ -27,8 +25,10 @@ const NavigationStack = () => {
     <OverlayProvider>
       <Chat client={chatClient}>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="ChannelListScreen" component={ChannelListScreen} />
+          <Stack.Screen
+            name="ChannelListScreen"
+            component={ChannelListScreen}
+          />
           <Stack.Screen name="ChannelScreen" component={ChannelScreen} />
         </Stack.Navigator>
       </Chat>
@@ -39,13 +39,11 @@ const NavigationStack = () => {
 export const ChatInterface = () => {
   return (
     <ChatContextProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <NavigationContainer>
-            <NavigationStack />
-          </NavigationContainer>
-        </SafeAreaView>
-      </GestureHandlerRootView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <GestureHandlerRootView>
+          <NavigationStack />
+        </GestureHandlerRootView>
+      </SafeAreaView>
     </ChatContextProvider>
   );
 };

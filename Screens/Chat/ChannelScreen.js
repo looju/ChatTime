@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { MessageList, MessageInput, Channel,Audio } from "stream-chat-react-native";
+import { MessageList, MessageInput, Channel,AudioAttachment } from 'stream-chat-expo'
 import { useChatContext } from "./ChatContext";
 
 export const ChannelScreen = (props) => {
@@ -8,8 +8,8 @@ export const ChannelScreen = (props) => {
   return (
     <Channel channel={channel}>
       <MessageList />
-      <MessageInput />
-      <Audio/>
+      <MessageInput/>
+      <AudioAttachment/>
     </Channel>
   );
 };
